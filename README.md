@@ -1,1 +1,1 @@
-# rsp-manage-user-notifications-function
+# rsp-manage-notifications-function
