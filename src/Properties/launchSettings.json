@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "Rsp.ManageNotificationsFunction": {
+      "commandName": "Project",
+      "commandLineArgs": "--port 7264",
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}

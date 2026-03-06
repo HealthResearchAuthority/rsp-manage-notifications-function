@@ -1,0 +1,51 @@
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{1F7A8726-23BF-49D6-9627-245E98527A83}"
+EndProject
+
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".AppHost", ".AppHost", "{0DA7D0C6-98EA-46F2-A366-835EA6022212}"
+EndProject
+
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rsp.ManageNotificationsFunction", "src\Rsp.ManageNotificationsFunction.csproj", "{DDBF801B-4844-492D-9D52-D9DCF374AC56}"
+EndProject
+
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rsp.ServiceDefaults", "..\rsp-service-defaults\src\Rsp.ServiceDefaults\Rsp.ServiceDefaults.csproj", "{71C1E318-2EFC-4C48-8E21-0EBD13E563CE}"
+EndProject
+
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{18B7CA37-700D-4BB4-83F7-93C0466C14FE}"
+	ProjectSection(SolutionItems) = preProject
+		azure-pipelines.yaml = azure-pipelines.yaml
+		README.md = README.md
+	EndProjectSection
+EndProject
+
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DDBF801B-4844-492D-9D52-D9DCF374AC56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDBF801B-4844-492D-9D52-D9DCF374AC56}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDBF801B-4844-492D-9D52-D9DCF374AC56}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDBF801B-4844-492D-9D52-D9DCF374AC56}.Release|Any CPU.Build.0 = Release|Any CPU
+
+		{71C1E318-2EFC-4C48-8E21-0EBD13E563CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71C1E318-2EFC-4C48-8E21-0EBD13E563CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71C1E318-2EFC-4C48-8E21-0EBD13E563CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71C1E318-2EFC-4C48-8E21-0EBD13E563CE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+
+	GlobalSection(NestedProjects) = preSolution
+		{DDBF801B-4844-492D-9D52-D9DCF374AC56} = {1F7A8726-23BF-49D6-9627-245E98527A83}
+		{71C1E318-2EFC-4C48-8E21-0EBD13E563CE} = {0DA7D0C6-98EA-46F2-A366-835EA6022212}
+	EndGlobalSection
+EndGlobal

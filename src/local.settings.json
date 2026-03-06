@@ -1,0 +1,14 @@
+{
+    "IsEncrypted": false,
+    "Values": {
+        "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+        "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated",
+        "AutoClearReadNotificationsTimerSchedule": "0 0 5 * * *"
+    },
+    "AppSettings": {
+        "AzureAppConfiguration": {
+            "Endpoint": "",
+            "IdentityClientID": ""
+        }
+    }
+}
