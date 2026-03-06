@@ -11,5 +11,5 @@ public interface IManageNotificationServiceClient
     ///     Automatically clears read user notifications
     /// </summary>
     [Get("/UserNotifications/autoclear-read-notifications")]
-    Task<IApiResponse> AutoClearReadNotifications();
+    Task<IApiResponse> AutoClearReadNotifications([Query] int daysUntilAutoCleared);
 }

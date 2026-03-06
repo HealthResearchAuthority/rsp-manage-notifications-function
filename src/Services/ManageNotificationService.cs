@@ -6,8 +6,8 @@ namespace Rsp.ManageNotificationsFunction.Services;
 public class ManageNotificationService(IManageNotificationServiceClient client)
     : IManageNotificationService
 {
-    public async Task AutoClearReadNotifications()
+    public async Task AutoClearReadNotifications(int daysUntilAutoCleared)
     {
-        await client.AutoClearReadNotifications();
+        await client.AutoClearReadNotifications(daysUntilAutoCleared);
     }
 }

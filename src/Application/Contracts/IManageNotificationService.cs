@@ -2,5 +2,5 @@
 
 public interface IManageNotificationService
 {
-    Task AutoClearReadNotifications();
+    Task AutoClearReadNotifications(int daysUntilAutoCleared);
 }
