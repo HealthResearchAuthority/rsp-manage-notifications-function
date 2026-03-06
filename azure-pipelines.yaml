@@ -18,14 +18,22 @@ parameters:
       - uat
       - pre_prod
       - production
+
   - name: devops_library_branch
     displayName: DevOps Library Branch
     type: string
     default: main
+
+  - name: servicedefaults_library_branch
+    displayName: Service Defaults Library Branch
+    type: string
+    default: main
+
   - name: run_sonarcloud_analysis
     displayName: Run Sonar Cloud Analysis
     type: boolean
     default: true
+
   - name: skip_deployment
     displayName: Skip Deployment
     type: boolean
@@ -33,29 +41,35 @@ parameters:
 
 variables:
   - group: 'ManageNotificationsFunction'
+
   - name: vstsFeed
     value: "0e030eb0-cb72-4f42-b99a-26e6544271c3/0a3e0ad2-23b6-4e8b-ae12-cd6d01fe97e7"
+
   - name: solution
     value: "**/*.sln"
+
   - name: project
     value: "**/*.csproj"
+
   - name: projectForContainerBuild
     value: "Rsp.ManageNotificationsFunction.csproj"
+
   - name: buildConfiguration
     value: "Release"
+
   - name: service_connection
     ${{ if eq(parameters.env, 'dev') }}:
       value: "ARM Dev Connection New"
     ${{ if eq(parameters.env, 'systemtest_auto') }}:
-      value: "ARM Automated Test Connection"  
+      value: "ARM Automated Test Connection"
     ${{ if eq(parameters.env, 'systemtest_manual') }}:
       value: "ARM Manual Test Connection"
     ${{ if eq(parameters.env, 'uat') }}:
-        value: "ARM UAT Connection"
+      value: "ARM UAT Connection"
     ${{ if eq(parameters.env, 'pre_prod') }}:
-        value: "ARM PreProd Connection"
+      value: "ARM PreProd Connection"
     ${{ if eq(parameters.env, 'production') }}:
-        value: "ARM Production Connection"
+      value: "ARM Production Connection"
 
   - name: appSettingsJson
     value: |
@@ -83,7 +97,13 @@ resources:
       type: github
       name: 'HealthResearchAuthority/rsp-azure-devops-library'
       endpoint: AzureDevOpsToGitHubConnection
-      ref: ${{ parameters.devops_library_branch }}
+      ref: refs/heads/${{ parameters.devops_library_branch }}
+
+    - repository: service_defaults
+      type: github
+      name: 'HealthResearchAuthority/rsp-service-defaults'
+      endpoint: AzureDevOpsToGitHubConnection
+      ref: refs/heads/${{ parameters.servicedefaults_library_branch }}
 
 stages:
   - stage: Build
@@ -96,10 +116,12 @@ stages:
           sonar_project_key: HealthResearchAuthority_rsp-manage-notifications-function
           sonar_project_name: rsp-manage-notifications-function
           run_sonarcloud_analysis: ${{ parameters.run_sonarcloud_analysis }}
+          install_aspire: true
+          service_defaults_repo: service_defaults
 
   - stage: dev
     displayName: "Deploy to Development"
-    variables: 
+    variables:
       - group: 'DevelopmentEnvironment'
       - name: FunctionAppName
         value: "func-managenotifications-dev"
@@ -107,10 +129,13 @@ stages:
     jobs:
       - template: jobs/deployFunction.yaml@library
         parameters:
+          install_aspire: true
+          service_defaults_repo: service_defaults
           appSettings: $(appSettingsJson)
-          
+
   - stage: systemtest_auto
-    variables: 
+    displayName: "Deploy to System Test Auto"
+    variables:
       - group: 'STAutoEnvironment'
       - name: FunctionAppName
         value: "func-managenotifications-automationtest"
@@ -118,10 +143,13 @@ stages:
     jobs:
       - template: jobs/deployFunction.yaml@library
         parameters:
+          install_aspire: true
+          service_defaults_repo: service_defaults
           appSettings: $(appSettingsJson)
-          
+
   - stage: systemtest_manual
-    variables: 
+    displayName: "Deploy to System Test Manual"
+    variables:
       - group: 'STManualEnvironment'
       - name: FunctionAppName
         value: "func-managenotifications-manualtest"
@@ -129,11 +157,13 @@ stages:
     jobs:
       - template: jobs/deployFunction.yaml@library
         parameters:
+          install_aspire: true
+          service_defaults_repo: service_defaults
           appSettings: $(appSettingsJson)
 
   - stage: uat
     displayName: "Deploy to UAT"
-    variables: 
+    variables:
       - group: 'UATEnvironment'
       - name: FunctionAppName
         value: "func-managenotifications-uat"
@@ -141,11 +171,13 @@ stages:
     jobs:
       - template: jobs/deployFunction.yaml@library
         parameters:
+          install_aspire: true
+          service_defaults_repo: service_defaults
           appSettings: $(appSettingsJson)
 
   - stage: pre_prod
     displayName: "Deploy to PreProd"
-    variables: 
+    variables:
       - group: 'PreProdEnvironment'
       - name: FunctionAppName
         value: "func-managenotifications-preprod"
@@ -153,11 +185,13 @@ stages:
     jobs:
       - template: jobs/deployFunction.yaml@library
         parameters:
+          install_aspire: true
+          service_defaults_repo: service_defaults
           appSettings: $(appSettingsJson)
 
   - stage: production
     displayName: "Deploy to Prod"
-    variables: 
+    variables:
       - group: 'ProductionEnvironment'
       - name: FunctionAppName
         value: "func-managenotifications-prod"
@@ -165,4 +199,6 @@ stages:
     jobs:
       - template: jobs/deployFunction.yaml@library
         parameters:
+          install_aspire: true
+          service_defaults_repo: service_defaults
           appSettings: $(appSettingsJson)
