@@ -69,6 +69,11 @@ variables:
           "name": "AppSettings__AzureAppConfiguration__IdentityClientID",
           "value": "$(AppConfigurationClientID)",
           "slotSetting": false
+        },
+        {
+          "name": "AutoClearReadNotificationsTimerSchedule",
+          "value": "$(AutoClearReadNotificationsTimerSchedule)",
+          "slotSetting": false
         }
       ]
 
