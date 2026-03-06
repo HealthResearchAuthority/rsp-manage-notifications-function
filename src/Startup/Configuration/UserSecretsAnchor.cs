@@ -1,0 +1,3 @@
+﻿namespace Rsp.ManageNotificationsFunction.Startup.Configuration;
+
+internal class UserSecretsAnchor;
