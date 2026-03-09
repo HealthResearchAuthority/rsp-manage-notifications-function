@@ -124,7 +124,7 @@ stages:
     variables:
       - group: 'DevelopmentEnvironment'
       - name: FunctionAppName
-        value: "func-managenotifications-dev"
+        value: "func-manage-notifications-dev"
     condition: and(eq('${{ parameters.env }}', 'dev'), eq('${{ parameters.skip_deployment }}', 'false'))
     jobs:
       - template: jobs/deployFunction.yaml@library
@@ -138,7 +138,7 @@ stages:
     variables:
       - group: 'STAutoEnvironment'
       - name: FunctionAppName
-        value: "func-managenotifications-automationtest"
+        value: "func-manage-notifications-automationtest"
     condition: eq('${{ parameters.env }}', 'systemtest_auto')
     jobs:
       - template: jobs/deployFunction.yaml@library
@@ -152,7 +152,7 @@ stages:
     variables:
       - group: 'STManualEnvironment'
       - name: FunctionAppName
-        value: "func-managenotifications-manualtest"
+        value: "func-manage-notifications-manualtest"
     condition: eq('${{ parameters.env }}', 'systemtest_manual')
     jobs:
       - template: jobs/deployFunction.yaml@library
@@ -166,7 +166,7 @@ stages:
     variables:
       - group: 'UATEnvironment'
       - name: FunctionAppName
-        value: "func-managenotifications-uat"
+        value: "func-manage-notifications-uat"
     condition: and(eq('${{ parameters.env }}', 'uat'), eq('${{ parameters.skip_deployment }}', 'false'))
     jobs:
       - template: jobs/deployFunction.yaml@library
@@ -180,7 +180,7 @@ stages:
     variables:
       - group: 'PreProdEnvironment'
       - name: FunctionAppName
-        value: "func-managenotifications-preprod"
+        value: "func-manage-notifications-preprod"
     condition: and(eq('${{ parameters.env }}', 'pre_prod'), eq('${{ parameters.skip_deployment }}', 'false'))
     jobs:
       - template: jobs/deployFunction.yaml@library
@@ -194,7 +194,7 @@ stages:
     variables:
       - group: 'ProductionEnvironment'
       - name: FunctionAppName
-        value: "func-managenotifications-prod"
+        value: "func-manage-notifications-prod"
     condition: and(eq('${{ parameters.env }}', 'production'), eq('${{ parameters.skip_deployment }}', 'false'))
     jobs:
       - template: jobs/deployFunction.yaml@library
