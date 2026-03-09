@@ -19,7 +19,7 @@ parameters:
       - pre_prod
       - production
 
-  - name: devops_library_branc
+  - name: devops_library_branch
     displayName: DevOps Library Branch
     type: string
     default: main
