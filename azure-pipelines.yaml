@@ -92,7 +92,7 @@ resources:
       type: github
       name: 'HealthResearchAuthority/rsp-azure-devops-library'
       endpoint: AzureDevOpsToGitHubConnection
-      ref: refs/heads/${{ parameters.devops_library_branch }}
+      ref: ${{ parameters.devops_library_branch }}
 
 stages:
   - stage: Build
