@@ -83,6 +83,11 @@ variables:
           "name": "AutoClearReadNotificationsTimerSchedule",
           "value": "$(AutoClearReadNotificationsTimerSchedule)",
           "slotSetting": false
+        },
+        {
+          "name": "AutoClearReadNotificationsDays",
+          "value": "$(AutoClearReadNotificationsDays)",
+          "slotSetting": false
         }
       ]
 
